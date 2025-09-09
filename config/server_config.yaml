@@ -1,0 +1,175 @@
+# jarvis (implk-01) Server-Specific Configuration
+# Settings optimized for the jarvis computing environment
+
+server_info:
+  hostname: "implk-01"
+  server_name: "jarvis"
+  location: "Germain Lab"
+  
+# Path Configuration for jarvis
+paths:
+  # Base project directory on jarvis
+  project_root: "/data/mlaporte/Projects/JR_IBEX_003"
+  
+  # Data storage paths
+  raw_data_root: "/data/mlaporte/Projects/JR_IBEX_003/data/raw"
+  processed_data_root: "/data/mlaporte/Projects/JR_IBEX_003/data/processed"
+  
+  # Temporary working directory (high-speed storage)
+  temp_dir: "/tmp/jribex003"
+  
+  # Backup location
+  backup_dir: "/data/mlaporte/Projects/JR_IBEX_003/backups"
+  
+  # Conda/Mamba environment location
+  conda_env_path: "/usr/local/Caskroom/mambaforge/base/envs/ibex_py"
+  
+# Resource Configuration
+resources:
+  # Memory settings
+  max_memory_gb: 128
+  recommended_memory_gb: 64
+  
+  # CPU settings  
+  max_cores: 32
+  recommended_cores: 16
+  
+  # GPU availability
+  gpu_available: true
+  gpu_memory_gb: 24
+  
+  # Storage settings
+  max_disk_usage_gb: 500
+  temp_disk_usage_gb: 100
+
+# Environment Variables for jarvis
+environment:
+  # Python environment
+  CONDA_DEFAULT_ENV: "ibex_py"
+  
+  # Display settings (for GUI applications)
+  DISPLAY: ":0"
+  
+  # Library paths
+  LD_LIBRARY_PATH: "/usr/local/lib:/opt/lib"
+  
+  # Temporary directories
+  TMPDIR: "/tmp"
+  TMP: "/tmp"
+  
+  # Parallel processing
+  OMP_NUM_THREADS: "16"
+  MKL_NUM_THREADS: "16"
+  NUMBA_NUM_THREADS: "16"
+
+# Network and Access Settings
+network:
+  # SSH configuration
+  ssh_port: 22
+  
+  # Jupyter notebook settings
+  jupyter_port: 8888
+  jupyter_host: "0.0.0.0"
+  jupyter_token: "auto-generated"
+  
+  # File sharing
+  samba_share: "/data/mlaporte"
+  
+# Software Configuration
+software:
+  # Python version
+  python_version: "3.11.13"
+  
+  # Jupyter settings
+  jupyter_lab_version: "4.4.3"
+  
+  # Key scientific packages
+  numpy_version: "1.26.4"
+  scipy_version: "1.12.0"
+  scikit_image_version: "0.25.2"
+  
+  # IBEX-specific tools
+  simpleitk_version: "2.5.2"
+  tifffile_version: "2025.6.11"
+  
+# Performance Optimization
+performance:
+  # Memory mapping for large files
+  use_memory_mapping: true
+  
+  # Parallel processing
+  enable_multiprocessing: true
+  dask_scheduler: "threads"
+  
+  # Caching
+  enable_caching: true
+  cache_dir: "/tmp/jribex003_cache"
+  max_cache_size_gb: 10
+
+# Monitoring and Logging
+monitoring:
+  # System monitoring
+  monitor_cpu_usage: true
+  monitor_memory_usage: true
+  monitor_disk_usage: true
+  
+  # Performance logging
+  log_execution_times: true
+  log_memory_usage: true
+  
+  # Alert thresholds
+  cpu_alert_threshold: 90
+  memory_alert_threshold: 90
+  disk_alert_threshold: 85
+
+# Backup Configuration  
+backup:
+  # Automated backup settings
+  enable_auto_backup: true
+  backup_frequency: "daily"
+  backup_time: "02:00"
+  
+  # What to backup
+  backup_data: true
+  backup_results: true
+  backup_configs: true
+  
+  # Retention policy
+  keep_daily_backups: 7
+  keep_weekly_backups: 4
+  keep_monthly_backups: 3
+
+# Integration with Existing IBEX Pipeline
+ibex_integration:
+  # Existing pipeline compatibility
+  maintain_compatibility: true
+  
+  # Path mappings for existing scripts
+  legacy_paths:
+    notebooks: "/data/mlaporte/Projects/JR_IBEX_003/notebooks"
+    aligned: "/data/mlaporte/Projects/JR_IBEX_003/aligned"
+    transforms: "/data/mlaporte/Projects/JR_IBEX_003/transforms"
+    
+  # Migration settings
+  auto_migrate_data: false
+  preserve_existing_structure: true
+
+# Security Settings
+security:
+  # File permissions
+  default_file_permissions: "640"
+  default_dir_permissions: "750"
+  
+  # Access control
+  restrict_network_access: false
+  
+# Development Settings
+development:
+  # Debug mode
+  debug_mode: false
+  
+  # Verbose logging
+  verbose_logging: false
+  
+  # Development tools
+  enable_profiling: false

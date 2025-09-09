@@ -1,0 +1,48 @@
+# Temporary files
+/tmp/
+*.tmp
+*.temp
+
+# Data directories (large files)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Daily session states (keep structure, not content)
+config/daily_state.json
+results/daily_outputs/*
+!results/daily_outputs/.gitkeep
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files (personal configurations)
+.env
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

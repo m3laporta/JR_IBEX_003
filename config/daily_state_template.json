@@ -1,0 +1,80 @@
+{
+    "session_info": {
+        "last_session_date": null,
+        "session_start_time": null,
+        "session_end_time": null,
+        "session_duration_hours": 0,
+        "user": "mlaporte",
+        "hostname": "implk-01"
+    },
+    "current_sample": {
+        "roi_id": null,
+        "cycles_processed": [],
+        "current_workflow_step": "startup",
+        "processing_stage": "initial"
+    },
+    "workflow_progress": {
+        "00_daily_startup": {
+            "completed": false,
+            "last_run": null,
+            "status": "pending"
+        },
+        "01_spatial_processing": {
+            "completed": false,
+            "last_run": null,
+            "status": "pending"
+        },
+        "02_kipnis_analysis": {
+            "completed": false,
+            "last_run": null,
+            "status": "pending"
+        },
+        "03_germain_analysis": {
+            "completed": false,
+            "last_run": null,
+            "status": "pending"
+        },
+        "04_comparative_analysis": {
+            "completed": false,
+            "last_run": null,
+            "status": "pending"
+        },
+        "05_publication_figures": {
+            "completed": false,
+            "last_run": null,
+            "status": "pending"
+        }
+    },
+    "loaded_data": {
+        "raw_cycles": [],
+        "aligned_cycles": [],
+        "spatial_features": false,
+        "cell_data": false
+    },
+    "analysis_parameters": {
+        "registration_complete": false,
+        "segmentation_complete": false,
+        "spatial_analysis_complete": false
+    },
+    "workspace_state": {
+        "loaded_libraries": [],
+        "environment_variables": {},
+        "jupyter_kernel": "ibex_py"
+    },
+    "auto_saves": {
+        "last_auto_save": null,
+        "auto_save_interval": 10,
+        "backup_location": "results/daily_outputs"
+    },
+    "literature_methods": {
+        "trm_paper_loaded": false,
+        "meningioma_atlas_loaded": false,
+        "kipnis_methods_loaded": false,
+        "germain_methods_loaded": false
+    },
+    "notes": {
+        "daily_goals": [],
+        "completed_tasks": [],
+        "next_session_plan": []
+    }
+}
