@@ -1,0 +1,130 @@
+# Advanced Spatial Analysis Parameters for JR_IBEX_003
+# Parameters for literature-integrated spatial analysis methods
+
+# TRM Paper Spatial Analysis
+trm_paper:
+  spatial_neighborhoods:
+    radius_um: 50
+    min_neighbors: 3
+    cell_types_of_interest: ["CD8", "CD4", "CD45"]
+    
+  tissue_resident_memory:
+    cd8_trm_markers: ["CD8", "CD103", "CD69"]
+    memory_threshold: 0.5
+    spatial_clustering_radius: 25
+    
+  interaction_analysis:
+    max_distance_um: 20
+    interaction_pairs:
+      - ["CD8", "CD4"]
+      - ["CD8", "CD68"]
+      - ["CD4", "CD20"]
+
+# Meningioma Atlas Integration  
+meningioma_atlas:
+  tissue_segmentation:
+    segmentation_model: "cellpose"
+    nuclear_diameter: 15
+    flow_threshold: 0.4
+    cellprob_threshold: 0.0
+    
+  spatial_profiling:
+    region_types: ["tumor", "interface", "normal"]
+    profiling_radius_um: 100
+    feature_extraction:
+      - "cell_density"
+      - "marker_intensity"
+      - "spatial_clustering"
+      - "nearest_neighbor_distance"
+
+# Kipnis Lab Methods
+kipnis_methods:
+  microglial_territories:
+    iba1_channel: "IBA1"
+    territory_radius_um: 75
+    overlap_threshold: 0.2
+    morphology_features:
+      - "soma_area"
+      - "process_length"
+      - "ramification_index"
+      - "convex_hull_area"
+      
+  brain_immune_interactions:
+    immune_markers: ["CD45", "CD3", "CD68", "IBA1"]
+    neuronal_markers: ["NeuN"]
+    glial_markers: ["GFAP", "IBA1"]
+    interaction_radius_um: 30
+    
+# Germain Lab Methods  
+germain_methods:
+  multi_scale_analysis:
+    scale_levels: [10, 25, 50, 100, 200]  # microns
+    feature_types:
+      - "local_density"
+      - "clustering_coefficient" 
+      - "spatial_autocorrelation"
+      - "ripley_k_function"
+      
+  cell_interaction_networks:
+    network_radius_um: 50
+    edge_weight_metric: "inverse_distance"
+    community_detection: "leiden"
+    network_metrics:
+      - "degree_centrality"
+      - "betweenness_centrality"
+      - "clustering_coefficient"
+      - "modularity"
+
+# General Spatial Analysis Parameters
+general_spatial:
+  coordinate_system: "microns"
+  pixel_size_um: 0.325  # Standard IBEX pixel size
+  
+  neighborhood_analysis:
+    radius_options: [10, 25, 50, 75, 100, 150, 200]
+    min_cells_threshold: 5
+    
+  clustering_analysis:
+    methods: ["dbscan", "leiden", "kmeans"]
+    dbscan_eps: 25
+    dbscan_min_samples: 5
+    
+  distance_metrics:
+    - "euclidean"
+    - "manhattan" 
+    - "chebyshev"
+    
+  statistical_tests:
+    - "permutation_test"
+    - "bootstrap"
+    - "kolmogorov_smirnov"
+    
+# Visualization Parameters
+visualization:
+  default_colormap: "viridis"
+  cell_size: 2
+  alpha: 0.7
+  figure_size: [10, 8]
+  
+  spatial_plots:
+    show_neighborhoods: true
+    show_interactions: true
+    show_territories: true
+    overlay_tissue_regions: true
+    
+# Quality Control Thresholds  
+quality_control:
+  min_cell_area_um2: 20
+  max_cell_area_um2: 500
+  min_nuclear_intensity: 100
+  max_nuclear_intensity: 65535
+  
+  spatial_filtering:
+    edge_buffer_um: 100  # Exclude cells near image edges
+    min_neighbors_for_analysis: 3
+    
+# Output Settings
+output:
+  save_intermediate_results: true
+  compress_spatial_data: true
+  export_formats: ["csv", "h5", "parquet"]

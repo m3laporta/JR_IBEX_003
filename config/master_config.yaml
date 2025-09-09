@@ -1,0 +1,141 @@
+# Master Configuration for JR_IBEX_003
+# Complete project settings for spatial immunofluorescence analysis
+
+project:
+  name: "JR_IBEX_003"
+  description: "Immunofluorescence Multi-Cycle Alignment & Spatial Analysis Pipeline"
+  version: "1.0.0"
+  
+# Server Configuration (jarvis - implk-01)
+server:
+  hostname: "implk-01" 
+  base_path: "/data/mlaporte/Projects/JR_IBEX_003"
+  compute_resources:
+    max_memory_gb: 128
+    max_cores: 32
+    gpu_available: true
+  
+# IBEX Panel Configuration
+ibex:
+  cycles: 4  # Default number of cycles
+  channels_per_cycle: 5  # Standard channels per cycle
+  channel_mapping:
+    cycle1:
+      ch0: "DAPI"
+      ch1: "CD45"
+      ch2: "CD3"  
+      ch3: "CD68"
+      ch4: "Autofluorescence"
+    cycle2:
+      ch0: "DAPI"
+      ch1: "CD8"
+      ch2: "CD4"
+      ch3: "CD20"
+      ch4: "Autofluorescence"
+    cycle3:
+      ch0: "DAPI"
+      ch1: "IBA1"
+      ch2: "GFAP"
+      ch3: "NeuN"
+      ch4: "Autofluorescence"
+    cycle4:
+      ch0: "DAPI"
+      ch1: "PD1"
+      ch2: "CD163"
+      ch3: "Ki67"
+      ch4: "Autofluorescence"
+      
+# File Paths and Directory Structure  
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  spatial_features: "data/spatial_features"
+  cell_data: "data/cell_data"
+  aligned_data: "aligned"
+  transforms: "transforms"
+  results: "results"
+  daily_outputs: "results/daily_outputs"
+  spatial_analysis: "results/spatial_analysis" 
+  publication_figures: "results/publication_figures"
+  workflows: "workflows"
+  scripts: "scripts"
+  literature: "literature"
+  
+# Analysis Parameters
+analysis:
+  registration:
+    reference_cycle: 1
+    reference_channel: "DAPI"
+    registration_method: "StackReg"
+    
+  spatial:
+    neighborhood_radius_um: 50
+    min_cells_per_neighborhood: 5
+    spatial_scale_levels: [10, 25, 50, 100, 200]  # microns
+    
+  cell_segmentation:
+    nuclear_channel: "DAPI"
+    min_cell_area: 20
+    max_cell_area: 500
+    
+# Literature Integration Settings
+literature_methods:
+  trm_paper:
+    enabled: true
+    spatial_neighborhoods: true
+    tissue_resident_memory_analysis: true
+    
+  meningioma_atlas:
+    enabled: true
+    tissue_segmentation: true
+    spatial_profiling: true
+    
+  kipnis_lab:
+    enabled: true
+    microglial_territories: true
+    brain_immune_interactions: true
+    
+  germain_lab:
+    enabled: true
+    multi_scale_spatial_features: true
+    cell_interaction_networks: true
+
+# Daily Workflow Configuration
+daily_workflow:
+  auto_save_interval_minutes: 10
+  max_session_hours: 12
+  backup_frequency: "hourly"
+  progress_tracking: true
+  
+# Publication Figure Settings  
+figures:
+  dpi: 300
+  format: "pdf"
+  style: "nature"
+  color_scheme: "colorblind_friendly"
+  font_size: 8
+  figure_width_inches: 7.5  # Nature single column
+  
+# Environment Settings
+environment:
+  python_env: "ibex_py"
+  jupyter_kernel: "ibex_py"
+  required_packages:
+    - "numpy"
+    - "pandas" 
+    - "scikit-image"
+    - "matplotlib"
+    - "seaborn"
+    - "napari"
+    - "tifffile"
+    - "SimpleITK"
+    - "pystackreg"
+    - "scipy"
+    - "scikit-learn"
+    
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_file: "logs/jribex003.log"
+  max_log_size_mb: 100
+  backup_count: 5
